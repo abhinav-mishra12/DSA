@@ -14,6 +14,8 @@ class index{
         int num2 = input.nextInt();
         int sum = num1+num2;
         System.out.println("The sum of the given two numbers is: "+ sum);
+        input.close();
+
 
     }
 }
