@@ -47,7 +47,9 @@ public class Main {
         //     ***
         //     **
         //     *
-        // pattern5(9);
+        pattern5(5);
+
+        
 
 
 
@@ -92,25 +94,44 @@ public class Main {
 
     }
 
-    // static void pattern5(int n){
-    //     for (int i = 1; i <= n; i++) {
-    //         if (i<=5) {
-    //             for (int j = 0; j <= i; j++) {
-    //                 System.out.print("* ");
-    //             }
-    //             System.out.println();
-    //         }
-    //         else if (i>5) {
-    //             for (int j = 0; j < 4; j++) {
-    //                 for (int j2 = 4; j2 >j ; j2--) {
-    //                     System.out.print("* ");
-    //                 }
-                    
-    //             }
-    //             System.out.println();
-    //         }
-    //     }
-    // }
+    static void pattern5(int n){
+        
+        // Upper part of the pattern
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        // Lower part of the pattern
+        for (int i = n - 1; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+
+        // for (int i = 0; i < n; i++) {
+        //     if (i<5) {
+        //         for (int j = 0; j <= i; j++) {
+        //             System.out.print("* ");
+        //         }
+        //         System.out.println();
+        //     }
+            
+            
+        //     // else if (i>5) {
+        //     //     for (int j = 0; j < 4; j++) {
+        //     //         for (int j2 = 4; j2 >j ; j2--) {
+        //     //             System.out.print("* ");
+        //     //         }
+        //     //         System.out.println();
+        //     //     }
+        //     // }
+        // }
+    }
         
     
 }
