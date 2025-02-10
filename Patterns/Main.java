@@ -49,6 +49,21 @@ public class Main {
         //     *
         pattern5(5);
 
+
+
+        // Q6:    
+        //      *
+        //     * *
+        //    * * *
+        //   * * * *
+        //  * * * * *
+        //   * * * *
+        //    * * *
+        //     * *
+        //      *
+
+         pattern6(6);
+
         
 
 
@@ -132,6 +147,12 @@ public class Main {
         //     // }
         // }
     }
+
+    static void pattern6(int n){
+        
+    }
+
+
         
     
 }
