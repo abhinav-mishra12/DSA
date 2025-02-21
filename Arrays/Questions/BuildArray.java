@@ -21,8 +21,26 @@
 //     = [nums[5], nums[0], nums[1], nums[2], nums[3], nums[4]]
 //     = [4,5,0,1,2,3]
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class BuildArray{
     public static void main(String[] args) {
-        
-    }
+        Scanner input = new Scanner(System.in);
+        ArrayList<Integer> nums = new ArrayList<>(6);
+        for (int i = 0; i < 6; i++) {   // In Arraylist we cant use .length method. Instead of it we use .size() method.
+            nums.add(input.nextInt());// In Arraylist we use add to add the elements in the Array.
+        }
+
+        // Create an array ans of the same length as nums
+        int[] ans = new int[nums.size()];
+        for (int i = 0; i < nums.size(); i++) {
+            ans[i]= nums.get(nums.get(i)); // ArrayList we dont perform indexing like we do in Array. We ned to use .get() for indexing.
+        }
+        for (int i = 0; i < nums.size(); i++) {
+            System.out.print(ans[i]+" ");
+        }
+        input.close();
+    }   
 }
+
