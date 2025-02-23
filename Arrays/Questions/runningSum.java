@@ -45,17 +45,13 @@ public class runningSum {
     }
 
     public static int[] runningSum(int[] nums){
-        int[] ans = new int[nums.length];
-        for (int i = 0; i < ans.length; i++) {
-         if (i==0) {
-            ans[i]=nums[i];
-         }   
-        else if (i>0) {
-            for (int j = 0; j <= i; j++) {
-                ans[i]= nums[i-1]+nums[i];
-            }
+        int[] runningSum = new int[nums.length];
+        runningSum[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            runningSum[i] = runningSum[i - 1] + nums[i];
         }
-        }
-        return ans;
+        
+        return runningSum;
+        
     }
 }
