@@ -38,13 +38,13 @@ public class runningSum {
         }
 
         //Call the method
-        int[] ans = runningSum(numsArray);
+        int[] ans = runingSum(numsArray);
         System.out.print(Arrays.toString(ans));
         
         input.close();
     }
 
-    public static int[] runningSum(int[] nums){
+    public static int[] runingSum(int[] nums){
         int[] runningSum = new int[nums.length];
         runningSum[0] = nums[0];
         for (int i = 1; i < nums.length; i++) {
