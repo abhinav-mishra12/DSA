@@ -67,6 +67,10 @@ public class countMatches {
 
     public static int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
         int count = 0;
+        // This is a for-each loop that iterates over each element in the items list. The variable item will represent one of the sub-lists (each item has 3 elements: type, color, name)
+        // in every iteration.
+        // For each loop 3 baari chalega, kyuki items mai 3 list hai. 
+        // To for each iteration hum jo bhi key de rkha hai uss key k index pe check krega aur agr same hua to count++.
         for(List<String> item : items){
             switch (ruleKey) {
                 case "type":
