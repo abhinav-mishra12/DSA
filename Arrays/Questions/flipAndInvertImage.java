@@ -20,33 +20,34 @@
 // Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
 // Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].
 // Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class flipAndInvertImage {
     public static void main(String[] args) {
-        class Solution {
-            public int[][] flipAndInvertImage(int[][] image) {
-                for(int i = 0;i<image.length;i++) {
-                    reverseArray(image[i]);
-                }
-                for(int i = 0;i<image.length;i++) {
-                    bitReverse(image[i]);
-                }
-                return image;
-            }
-            static void bitReverse(int[] arr) {
-                for(int i = 0;i<arr.length;i++) {
-                    arr[i] = arr[i] ^ 1;
-                }
-            }
-            static void reverseArray(int[] arr) {
-                int left = 0, right = arr.length - 1;
-                while (left < right) {
-                    int temp = arr[left];
-                    arr[left] = arr[right];
-                    arr[right] = temp;
-                    left++;
-                    right--;
-                }
+        Scanner input = new Scanner(System.in);
+        
+        //Taking input in Array
+        int[][] image = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                image[i][j]=input.nextInt();
             }
         }
+
+        int[][] ans = flipandInvertImage(image);
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(Arrays.toString(ans));
+            }
+        }
+        input.close();
+    }
+
+    public static int[][] flipandInvertImage(int[][] image){
+
+        
+        return int[][];
     }
 }
