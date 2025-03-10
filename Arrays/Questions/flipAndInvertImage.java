@@ -28,26 +28,61 @@ public class flipAndInvertImage {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
-        //Taking input in Array
-        int[][] image = new int[3][3];
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                image[i][j]=input.nextInt();
-            }
-        }
+        System.out.print("Enter the size of the matrix: ");
+        int n = input.nextInt();
+        int[][] image = new int[n][n];
 
-        int[][] ans = flipandInvertImage(image);
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(Arrays.toString(ans));
+        // Insert elements
+        System.out.println("Enter the matrix elements:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                image[i][j] = input.nextInt();
             }
         }
         input.close();
+
+        // Print Original Matrix
+        System.out.println("Original Matrix:");
+        for (int i = 0; i < n; i++) {
+            System.out.println(Arrays.toString(image[i]));
+        }
+
+        // Process the matrix
+        int[][] ans = flipAndInvertImage(image);
+
+        // Print Resulting Matrix
+        System.out.println("Flipped and Inverted Matrix:");
+        for (int i = 0; i < ans.length; i++) {
+            System.out.println(Arrays.toString(ans[i]));
+        }
     }
 
-    public static int[][] flipandInvertImage(int[][] image){
+    static int[][] flipAndInvertImage(int[][] image) {
+        int n = image.length; // Get the actual size of the matrix
+        for (int i = 0; i < n; i++) {
+            reverseimage(image[i]); // Flip the row
+            bitreverse(image[i]); // Invert the bits
+        }
+        return image;
+    }
 
-        
-        return int[][];
+    static void reverseimage(int[] arr) {
+        int left = 0, right = arr.length - 1;
+        while (left < right) {
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+    }
+
+    static void bitreverse(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = arr[i] ^ 1; // Invert bits
+        }
     }
 }
+
+
+
