@@ -21,6 +21,7 @@
 // Input: mat = [[0,0,0],[0,1,0],[1,1,1]], target = [[1,1,1],[0,1,0],[0,0,0]]
 // Output: true
 // Explanation: We can rotate mat 90 degrees clockwise two times to make mat equal target.
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class findRotation {
@@ -42,7 +43,7 @@ public class findRotation {
         int[][] target = new int[n][n];
         for (int i = 0; i < target.length; i++) {
             for (int j = 0; j < target.length; j++) {
-                mat[i][j]=input.nextInt();
+                target[i][j]=input.nextInt();
             }
         }
 
@@ -51,57 +52,46 @@ public class findRotation {
         input.close();       
     }
 
-    static boolean findRotation(int[][] mat, int[][] target){
+    public static boolean findRotation(int[][] mat, int[][] target){
+        
+        //We can rotate a matrix 4 times in clockwise direction to check 90 180 270 360
+        for (int i = 0; i < 4; i++) {
+            if (Arrays.deepEquals(mat, target)) {  //checks if the two matrices are identical.
+
+                return true;
+            }
+
+            mat = rotate90Degree(mat);            
+        }
+        return false;
+    }
+
+    private static int[][] rotate90Degree(int[][] mat){
 
         int n = mat.length;
-        
+        // Transpose the Matrix
         for (int i = 0; i < n; i++) {
-            clockwiseRotate(mat[i]);
+            for (int j = i+1; j < n; j++) {
+                int temp = mat[i][j];
+                mat[i][j]=mat[j][i];
+                mat[j][i]=temp;
+            }
         }
-        return true;
-    }
 
-    static void clockwiseRotate(int[] arr){
+        // Reverse Each Row
 
-        int n = arr.length;
-        int[][] array = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            int left = 0;
+            int right = n-1;
+            while (left<right) {
+                int temp = mat[i][left];
+                mat[i][left] = mat[i][right];
+                mat[i][right] = temp;
+                left++;
+                right--;
+            }
+        }
 
-
+        return mat;
     }
 }
-
-
-// class Solution {
-//     public boolean findRotation(int[][] mat, int[][] target) {
-//         for (int i = 0; i < 4; i++) {
-//             if (Arrays.deepEquals(mat, target)) {
-//                 return true;
-//             }
-//             mat = rotate90Degrees(mat);
-//         }
-//         return false;
-//     }
-
-//     private int[][] rotate90Degrees(int[][] mat) {
-//         int n = mat.length;
-//         for (int i = 0; i < n; i++) {
-//             for (int j = i + 1; j < n; j++) {
-//                 int temp = mat[i][j];
-//                 mat[i][j] = mat[j][i];
-//                 mat[j][i] = temp;
-//             }
-//         }
-        
-//         for (int i = 0; i < n; i++) {
-//             int left = 0, right = n - 1;
-//             while (left < right) {
-//                 int temp = mat[i][left];
-//                 mat[i][left] = mat[i][right];
-//                 mat[i][right] = temp;
-//                 left++;
-//                 right--;
-//             }
-//         }
-//         return mat;
-//     }
-// }
