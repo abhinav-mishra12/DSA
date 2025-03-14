@@ -15,24 +15,34 @@
 
 // Input: n = 1
 // Output: [0]
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class sumZero {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-    }
-}
-class Solution {
-    public int[] sumZero(int n) {
-        int[] result = new int[n];
-        int sum = 0;
+        System.out.println("Enter the size of the array: ");
+        int n = input.nextInt();
+        int[] arr = new int[n];        
+        arr=sumZero(n);
+        System.out.println(Arrays.toString(arr));
+        input.close();
+        
 
-        for (int i = 0; i < n-1; i++) {
-            result[i] = i+1;
-            sum += result[i];
+    }
+
+    public static int[] sumZero(int n){
+        System.out.println("Enter the elements of the array: ");
+        int arr[]=new int[n];
+        arr[0]=n/2;
+        int sum=arr[0];
+        for (int i = 1; i < n-1; i++) {
+            arr[i]=n/2+arr[i-1];
+            sum+=arr[i];
         }
-        result[n - 1] = -1 * sum;
-        return result;
-    }
+        arr[n-1]=-sum;
 
+        return arr;
+    }
 }
+
