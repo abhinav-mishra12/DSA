@@ -24,8 +24,8 @@ public class maxSubArray {
             if (sum>max) {
                 max=sum;
             }
-            if (sum<0) {
-                sum=0;
+            if (sum<0) { //Suppose we hit a negative sum and If we keep going with this negative value, it will only reduce the potential for a larger sum.
+                sum=0;   //
             }
             
 
