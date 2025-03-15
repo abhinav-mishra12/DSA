@@ -65,7 +65,7 @@ public class luckyNumbers{
         // Find all common elements (lucky numbers)
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
-                if (matrix[i][j] == minRow[i] && matrix[i][j] == maxCol[j]) {
+                if (minRow[i] ==  maxCol[j]) {
                     luckyNumbers.add(matrix[i][j]);
                 }
             }
@@ -95,91 +95,4 @@ public class luckyNumbers{
     }
 }
 
-// import java.util.ArrayList;
-// import java.util.Arrays;
-// import java.util.Scanner;
-// import java.util.List;
 
-
-// public class luckyNumbers {
-//     public static void main(String[] args) {
-//         Scanner input = new Scanner(System.in);
-//         System.out.println("Enter the size of the array: ");
-//         int n = input.nextInt();
-//         int m = input.nextInt();
-//         int[][] mat = new int[n][m];
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < m; j++) {
-//                 mat[i][j]=input.nextInt();
-//             }
-//         }
-
-//         List<Integer> ans = luckyNumbers(mat);
-
-//         System.out.println(ans);
-//         input.close();
-//     }
-
-
-
-//     public static List<Integer> luckyNumbers(int[][] matrix){
-//         List<Integer> luckyNumbers = new ArrayList<>();
-//         int r = matrix.length;
-//         int c = matrix[0].length;
-        
-//         int[] minRow = new int[r];
-//         int[] maxCol = new int[c];
-        
-//         for (int i = 0; i < r; i++) {
-//             minRow[i]=minimumInRow(matrix[i]);
-//         }
-
-//         for (int i = 0; i < c; i++) {
-//             maxCol[i]=maximumInCol(matrix);
-//         }
-
-//         int ans = common(minRow, maxCol);
-//         luckyNumbers.add(ans);
-//         return luckyNumbers; 
-        
-//     }
-
-//     public static int minimumInRow(int[] mat){
-//         int minimumR=mat[0];
-//         for (int i = 1; i < mat.length; i++) {
-//             if (mat[i]<minimumR) {
-//                 minimumR=mat[i];
-//             }
-//         }
-//         return minimumR;
-//     }
-
-//     public static int maximumInCol(int[][] mat){
-//         int n = mat[0].length;
-//         int maximumC=mat[0][0];
-//         for (int j = 0; j < n; j++) {
-//             for (int i = 0; i < mat.length; i++) {
-//                 if (mat[i][j]>maximumC) {
-//                     maximumC=mat[i][j];
-//                 }
-//             }
-            
-//         }
-//         return maximumC;
-//     }
-
-//     public static int common(int[] arr, int[] array){
-        
-//         for (int i = 0; i < arr.length; i++) {
-//             for (int j = 0; j < array.length; j++) {
-//                 if(arr[i]==array[j]){
-//                     return arr[i];
-                    
-//                 }
-//             }
-//         }
-
-        
-        
-//     }
-// }
