@@ -50,7 +50,7 @@ public class removeDuplicates {
     }
     public static int removeDuplicates(int[] arr){
         int count=0;
-       for(int i=0;i<nums.length;i++)
+       for(int i=0;i<arr.length;i++)
        {
            if(i<arr.length-1 && arr[i]==arr[i+1])
            {
