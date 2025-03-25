@@ -23,9 +23,11 @@ public class spiralOrder {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        System.out.println("Enter the size of the matrix: ");
         int n = input.nextInt();
         int m = input.nextInt();
         int[][] matrix = new int[n][m];
+        System.out.println("Enter the elements of the matrix: ");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 matrix[i][j]=input.nextInt();
@@ -34,45 +36,47 @@ public class spiralOrder {
 
         List<Integer> ans = spiralOrder(matrix);
         System.out.println(ans);
-
+        input.close();
     }
 
-    
-        public static List<Integer> spiralOrder(int[][] matrix) {
-            List<Integer> res = new ArrayList<>();
-            int top = 0, bottom = matrix.length - 1;
-            int left = 0, right = matrix[0].length - 1;
-    
-            while (top <= bottom && left <= right) {
-                // Top row
-                for (int i = left; i <= right; i++) {
-                    res.add(matrix[top][i]);
-                }
-                top++;
-    
-                // Right column
-                for (int i = top; i <= bottom; i++) {
-                    res.add(matrix[i][right]);
-                }
-                right--;
-    
-                if (top <= bottom) {
-                    // Bottom row
-                    for (int i = right; i >= left; i--) {
-                        res.add(matrix[bottom][i]);
-                    }
-                    bottom--;
-                }
-    
-                if (left <= right) {
-                    // Left column
-                    for (int i = bottom; i >= top; i--) {
-                        res.add(matrix[i][left]);
-                    }
-                    left++;
+    public static List<Integer> spiralOrder(int[][] matrix){
+        List<Integer> ans = new ArrayList<>();
+        int rowBegin=0;
+        int colBegin=0;
+        int colEnd=matrix[0].length-1;
+        int rowEnd=matrix.length-1;
+
+        while (rowBegin<=rowEnd && colBegin<=colEnd) {
+            
+            //Traverse Right
+            for (int j = colBegin; j <= colEnd; j++) {
+                ans.add(matrix[rowBegin][j]);
+            }
+            rowBegin++;
+
+            //Traverse Down
+            for (int j = rowBegin; j <= rowEnd; j++) {
+                ans.add(matrix[j][colEnd]);
+            }
+            colEnd--;
+
+            //Traverse Left
+            if (rowBegin<=rowEnd) {
+                for (int j = colEnd; j >= colBegin; j--) {
+                    ans.add(matrix[rowEnd][j]);
                 }
             }
-            return res;
+            rowEnd--;
+
+            //Traverse up
+            if (colBegin<=colEnd) {
+                for (int j = rowEnd; j >= rowBegin; j--) {
+                    ans.add(matrix[j][colBegin]);
+                }
+            }
+            colBegin++;
         }
-    
+        return ans;
+    }
+       
 }
