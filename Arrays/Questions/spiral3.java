@@ -37,41 +37,36 @@ public class spiral3 {
         input.close();
 
     }
+
     public static int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart){
         int n = rows*cols;
-        int m = 2;
-        int[][] mat = new int[n][m];
-        return mat;
-
-        class Solution {
-            public int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
-                int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // East, South, West, North
-                int[][] result = new int[rows * cols][2];
-                int steps = 0, d = 0, len = 0;
-                
-                result[0] = new int[]{rStart, cStart};
-                int count = 1;
-                
-                while (count < rows * cols) {
-                    if (d == 0 || d == 2) steps++; // Increase step size after moving East or West
-                    
-                    for (int i = 0; i < steps; i++) {
-                        rStart += directions[d][0];
-                        cStart += directions[d][1];
-                        
-                        if (rStart >= 0 && rStart < rows && cStart >= 0 && cStart < cols) {
-                            result[count++] = new int[]{rStart, cStart};
-                        }
-                        
-                        if (count == rows * cols) return result;
+        int[][] res = new int[n][2];
+        int directions[][] = {{0,1}, {1,0}, {0,-1}, {-1,0}};
+        res[0][0]=rStart;
+        res[0][1]=cStart;
+        int step=1;
+        int index=0;
+        int count=1;
+        while (count<n) {
+            for (int times = 0; times < 2; times++) {
+                int dr = directions[index%4][0];
+                int dc = directions[index%4][1];
+                for (int i = 0; i < step; i++) {
+                    rStart+=dr;
+                    cStart+=dc;
+                    if (rStart>=0 && rStart<rows && cStart>=0 && cStart<cols) {
+                        res[count][0]=rStart;
+                        res[count][1]=cStart;
+                        count++;
                     }
-                    
-                    d = (d + 1) % 4; // Change direction
                 }
-                
-                return result;
+                index++;
             }
+            step++;
         }
-
+        return res;
     }
+
+
+    
 }
