@@ -24,7 +24,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class BuildArray{
+public class buildArray{
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         ArrayList<Integer> nums = new ArrayList<>(6);
@@ -43,4 +43,3 @@ public class BuildArray{
         input.close();
     }   
 }
-
