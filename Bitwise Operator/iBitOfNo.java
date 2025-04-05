@@ -11,5 +11,7 @@ public class iBitOfNo {
     public static int ithBit(int n){
         
        return (n&(1<<(5-1)))!=0?1:0;
+    //    condition ? value_if_true : value_if_false;
+
     }
 }
