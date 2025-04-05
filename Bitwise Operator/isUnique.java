@@ -11,3 +11,6 @@ public class isUnique {
         return unique;
     }
 }
+//XOR is both commutative (order doesn't matter) and associative (grouping doesn't matter).
+//0 ^ x = x (any number XOR'd with 0 is the number itself)
+//x ^ x = 0 (any number XOR'd with itself results in 0)
