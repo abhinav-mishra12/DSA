@@ -15,4 +15,4 @@ public class oddEven{
             return false;
         }
     }
-} 
+} //In binary, all odd numbers have their least significant bit (LSB) set to 1, and even numbers have their LSB set to 0
