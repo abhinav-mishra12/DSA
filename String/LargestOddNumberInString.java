@@ -23,13 +23,17 @@ public class LargestOddNumberInString {
     public static void main(String[] args) {
         class Solution {
             public String largestOddNumber(String num) {
-                for (int i = num.length() - 1; i >= 0; i--) {
-                    if (Character.getNumericValue(num.charAt(i)) % 2 == 1) {
-                        return num.substring(0, i + 1);
-                    }
+                int i = num.length() - 1;
+        
+                // Iterate from the end until we find an odd digit
+                while (i >= 0 && (num.charAt(i) - '0') % 2 == 0) {
+                    i--;
                 }
-                return "";        
+        
+                // Return the substring from 0 to i (inclusive), or "" if no odd digit found
+                return i >= 0 ? num.substring(0, i + 1) : "";
             }
         }
+        
     }
 }
