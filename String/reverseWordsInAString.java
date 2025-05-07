@@ -27,16 +27,24 @@ public class reverseWordsInAString {
         class Solution {
             public String reverseWords(String s) {
                 String[] words = s.split("\\s+");
-                StringBuilder res = new StringBuilder();
+                //Splits the string s into an array of words.
+                // \\s+ is a regex meaning "one or more whitespace characters".
+                //So it handles multiple spaces, tabs, etc.
+                //Example: " hello world " → ["hello", "world"]
         
-                for (int i = words.length - 1; i >= 0; i--) {
-                    res.append(words[i]);
-                    if (i != 0) {
-                        res.append(" ");
+                StringBuilder newString = new StringBuilder();
+        
+                for(int i=words.length-1; i>=0; i--){
+                    newString.append(words[i]);
+                    if(i!=0){
+                        newString.append(" ");
                     }
                 }
         
-                return res.toString().trim();
+                return newString.toString().trim();
+        
+                
+        
             }
         }
     }
