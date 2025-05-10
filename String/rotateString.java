@@ -25,3 +25,8 @@ public class rotateString {
         }
     }
 }
+
+// s = "abcde"
+// s + s = "abcdeabcde"
+// goal = "cdeab"
+// "cdeab" is a substring of "abcdeabcde" → ✅ return true.
