@@ -9,7 +9,7 @@ public class deletion {
         System.out.println("New head: "+ head.data);
 
         //Remove tail
-        removeTail(head);
+        head = removeTail(head);
         Node temp = head;
         while (temp!=null) {
             System.out.print(temp.data + " ");
