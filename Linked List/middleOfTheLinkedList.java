@@ -16,7 +16,8 @@
 // Input: head = [1,2,3,4,5,6]
 // Output: [4,5,6]
 // Explanation: Since the list has two middle nodes with values 3 and 4, we return the second one.
-public class middleOfTheLinkedList {
+
+public class middleOfTheLinkedList{
     public static void main(String[] args) {
         /**
  * Definition for singly-linked list.
@@ -30,16 +31,24 @@ public class middleOfTheLinkedList {
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-    ListNode slow = head;
-    ListNode fast = head;
-    
-    while (fast != null && fast.next != null) {
-        slow = slow.next;
-        fast = fast.next.next;
+        int length = countLengthOfLL(head);
+        int middle = (length/2)+1;
+        for(int i = 1; i < middle; i++){
+            head = head.next;
+        }
+        return head;
+
     }
-    
-    return slow;
-   }
+
+    public int countLengthOfLL(ListNode head){
+        ListNode temp = head;
+        int cnt = 0;
+        while(temp!=null){
+            temp = temp.next;
+            cnt++;
+        }
+        return cnt;
+    }
 }
     }
 }
