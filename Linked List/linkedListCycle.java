@@ -24,49 +24,41 @@
 // Input: head = [1], pos = -1
 // Output: false
 // Explanation: There is no cycle in the linked list.
-public class linkedListCycle {
 
-    // Definition for singly-linked list.
-    static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
-
-    static class Solution {
-        public boolean hasCycle(ListNode head) {
-            ListNode fast = head;
-            ListNode slow = head;
-
-            while (fast != null && fast.next != null) {
-                fast = fast.next.next;
-                slow = slow.next;
-
-                if (fast == slow) {
-                    return true;
-                }
-            }
-
-            return false;        
-        }
-    }
-
+public class linkedListCycle{
     public static void main(String[] args) {
-        // Example usage:
-        ListNode head = new ListNode(3);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(0);
-        ListNode node4 = new ListNode(-4);
+        
 
-        head.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node2; // Creating a cycle here
-
-        Solution solution = new Solution();
-        System.out.println(solution.hasCycle(head)); // Output: true
     }
 }
+
+//Tortoise method jisme fast slow se tez chlra hai too fast kabhi na kabhi in future agr cycle hogi to slow ko catch krlega.
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+// public class Solution {
+//     public boolean hasCycle(ListNode head) {
+//         ListNode slow = head;
+//         ListNode fast = head;
+
+//         while (fast != null && fast.next != null) {
+//             slow = slow.next;          // move one step
+//             fast = fast.next.next;     // move two steps
+
+//             if (slow == fast) {
+//                 return true;           // cycle detected
+//             }
+//         }
+
+//         return false; // no cycle
+//     }
+// }
