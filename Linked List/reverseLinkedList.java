@@ -30,17 +30,19 @@ public class reverseLinkedList {
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode node = null;
-
-        while (head != null) {
-            ListNode temp = head.next;
-            head.next = node;
-            node = head;
-            head = temp;
+        ListNode curr = head;
+        ListNode prev = null;
+        while(curr!=null){
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
+        return prev;
 
-        return node;        
+
     }
 }
+ 
     }
 }
