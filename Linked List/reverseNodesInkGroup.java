@@ -30,58 +30,60 @@ public class reverseNodesInkGroup {
  */
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
-        if(head==null || k==1){
-            return head;
-        }
+        ListNode temp = head;
+        ListNode prevNode = null;
 
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-
-        ListNode prevGrpEnd = dummy;
-        ListNode curr = head;
-
-        while(hasKNodes(curr, k)){
-            //Reverse K nodes
-            ListNode prev = null;
-            ListNode tail = curr;
-
-            for(int i=0; i<k; i++){
-                ListNode nextNode = curr.next;
-                curr.next = prev;
-                prev = curr;
-                curr = nextNode;
+        while (temp != null) {
+            ListNode kthNode = findKthNode(temp, k);
+            if (kthNode == null) {
+                if (prevNode != null) {
+                    prevNode.next = temp;
+                }
+                break;
             }
 
-            // Connect previous group to new head (prev), and tail to remaining list
-            prevGrpEnd.next = prev;
-            tail.next = curr;
+            ListNode nextNode = kthNode.next;
+            kthNode.next = null;
 
-            // Move prevGroupEnd to tail for next group
-            prevGrpEnd = tail;
+            // Reverse current k-group
+            ListNode reversedHead = reverse(temp);
 
+            // Connect previous group to reversed head
+            if (temp == head) {
+                head = reversedHead;
+            } else {
+                prevNode.next = reversedHead;
+            }
+
+            prevNode = temp; // after reversal, temp becomes end of reversed group
+            temp = nextNode;
         }
 
-        return dummy.next;
-
-
+        return head;
     }
 
-    
-    // Helper function to check if k nodes remain
-
-    public boolean hasKNodes(ListNode node, int k){
-        int cnt = 0;
-        while(node!=null && cnt<k){
+    private ListNode findKthNode(ListNode node, int k) {
+        while (node != null && k > 1) {
             node = node.next;
-            cnt++;
+            k--;
+        }
+        return node;
+    }
+
+    private ListNode reverse(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while (curr != null) {
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
         }
 
-        if(cnt==k){
-            return true;
-        }
-
-        return false;
+        return prev;
     }
 }
+
     }
 }
