@@ -1,7 +1,7 @@
 import java.util.Stack;
 public class postfixToInfix {
     public static void main(String[] args) {
-        Stack<String> st = new Stack();
+        Stack<String> st = new Stack<>();
         String s = "ab-de+f*/";
         int i = 0;
         while(i<s.length()){
