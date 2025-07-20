@@ -14,25 +14,52 @@
 
 // Input: arr = [11,81,94,43,3]
 // Output: 444
+import java.util.Stack;
 public class sumOfSubarrayMinimums {
     public static void main(String[] args) {
-        class Solution {
+
+class Solution {
     public int sumSubarrayMins(int[] arr) {
-        int total = 0;
         int n = arr.length;
         int mod = 1_000_000_007;
 
-        for (int start = 0; start < n; start++) {
-            int min = arr[start];
-            for (int end = start; end < n; end++) {
-                min = Math.min(min, arr[end]);
-                total = (total + min) % mod;
+        int[] prevLess = new int[n];
+        int[] nextLess = new int[n];
+        Stack<Integer> st = new Stack<>();
+
+        // Previous Less Element
+        for (int i = 0; i < n; i++) {
+            while (!st.isEmpty() && arr[st.peek()] > arr[i]) {
+                st.pop();
             }
+            prevLess[i] = st.isEmpty() ? -1 : st.peek();
+            st.push(i);
         }
 
-        return total;
+        st.clear();
+
+        // Next Less Element
+        for (int i = n - 1; i >= 0; i--) {
+            while (!st.isEmpty() && arr[st.peek()] >= arr[i]) {
+                st.pop();
+            }
+            nextLess[i] = st.isEmpty() ? n : st.peek();
+            st.push(i);
+        }
+
+        // Calculate contribution
+        long result = 0;
+        for (int i = 0; i < n; i++) {
+            int left = i - prevLess[i];
+            int right = nextLess[i] - i;
+            long contrib = (long) left * right * arr[i];
+            result = (result + contrib % mod) % mod;
+        }
+
+        return (int) result;
     }
 }
+
 
     }
 }
