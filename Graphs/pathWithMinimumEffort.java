@@ -28,6 +28,7 @@
 // Output: 0
 // Explanation: This route does not require any effort.
 import java.util.PriorityQueue;
+import java.util.*;
 
 public class pathWithMinimumEffort {
 
