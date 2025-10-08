@@ -6,27 +6,37 @@ public class houseRobber2 {
         if(n==0) return 0;
         if(n==1) return nums[0];
 
-        int case1 = robLinear(nums, 0, n-2);
+        //From 0 to n-2
+        int[] dp1 = new int[n];
+        for(int i=0; i<n; i++){
+            dp1[i]=-1;
+        }
+        int max1 = helper(nums, dp1, 0, n-2);
 
-        int case2 = robLinear(nums,1,n-1);
 
-        return Math.max(case1, case2);
-    }
+        //From 1 to n-1
+        int[] dp2 = new int[n];
+        for(int i=0; i<n; i++){
+            dp2[i]=-1;
+        }
+        int max2 = helper(nums, dp2, 1, n-1);
 
-    public int robLinear(int[] nums, int start, int end){
-        int prev1=0;
-        int prev2=0;
+        return Math.max(max1,max2);
+    }   
 
-        for(int i=start; i<=end; i++){
-            int pick = nums[i]+prev2;
-            int skip = prev1;
-            int curr = Math.max(pick, skip);
+    public int helper(int[] nums, int[] dp, int start, int end){
+        if(end==start) return nums[end];
+        if(end<start) return 0;
 
-            prev2 = prev1;
-            prev1 = curr;
+        if(dp[end]!=-1){
+            return dp[end];
         }
 
-        return prev1;
+        int pick = nums[end]+helper(nums, dp, start, end-2);
+        int notPick = helper(nums, dp, start, end-1);
+
+        dp[end] = Math.max(pick, notPick);
+        return dp[end];
     }
 }
     }
